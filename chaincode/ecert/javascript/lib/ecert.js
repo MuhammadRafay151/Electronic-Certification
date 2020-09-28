@@ -43,19 +43,18 @@ class ecert extends Contract {
         return CertificateAsBytes.toString();
     }
 
-    async createCar(ctx, carNumber, make, model, color, owner) {
-        console.info('============= START : Create Car ===========');
-
-        const car = {
-            color,
-            docType: 'car',
-            make,
-            model,
-            owner,
-        };
-
-        await ctx.stub.putState(carNumber, Buffer.from(JSON.stringify(car)));
-        console.info('============= END : Create Car ===========');
+    async createCertificate(ctx,key,Name,email,description,Organizations,Title,docType) {
+        console.info('============= START : Create Certificate ===========');
+        const c1={
+    Name,
+    email,
+    description,
+    Organizations,
+    Title,
+    docType
+    }
+        await ctx.stub.putState(key, Buffer.from(JSON.stringify(c1)));
+        console.info('============= END : Certificate created ===========');
     }
 
     async queryAllCertificates(ctx) {
