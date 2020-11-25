@@ -6,7 +6,7 @@
 
 'use strict';
 
-const ECert = require('./lib/ecert');
+const ecert= require('./lib/ecert');
 
-module.exports.ECert  = ECert ;
-module.exports.contracts = [ ECert ];
+module.exports.ecert  = ecert ;
+module.exports.contracts = [ecert];

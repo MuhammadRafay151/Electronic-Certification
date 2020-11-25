@@ -27,7 +27,7 @@ class ecert extends Contract {
 
         for (let i = 0; i < Certificates.length; i++) {
             Certificates[i].docType = 'certificate';
-            await ctx.stub.putState("cert0",Buffer.from(JSON.stringify(Certificates[i])));
+            await ctx.stub.putState('ecert' + i, Buffer.from(JSON.stringify(Certificates[i])));
             console.info('Added <--> ', Certificates[i]);
         }
         console.info('============= END : Initialize Ledger ===========');
@@ -43,22 +43,14 @@ class ecert extends Contract {
         return CertificateAsBytes.toString();
     }
 
-    async createCertificate(ctx,key,Name,email,description,Organizations,Title,docType) {
+    async createCertificate(ctx,key,json){
         console.info('============= START : Create Certificate ===========');
-        const c1={
-    Name,
-    email,
-    description,
-    Organizations,
-    Title,
-    docType
-    }
-        await ctx.stub.putState(key, Buffer.from(JSON.stringify(c1)));
+        
+        await ctx.stub.putState(key, Buffer.from(json));
         console.info('============= END : Certificate created ===========');
     }
 
     async queryAllCertificates(ctx) {
-        console.log(ctx.stub);
         const startKey = '';
         const endKey = '';
         const allResults = [];
