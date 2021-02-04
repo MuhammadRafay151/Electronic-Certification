@@ -42,15 +42,35 @@ async function main() {
         // Submit the specified transaction.
         // createCar transaction - requires 5 argument, ex: ('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
         // changeCarOwner transaction - requires 2 args , ex: ('changeCarOwner', 'CAR12', 'Dave')
-        const cert = {
-            Name: 'rafay',
+        const cert = [{
+            Name: 'ISMAIL',
             Title: 'HLF 2020',
-            _id: 'asdbd234234',
+            _id: 'asdbd234235',
             logo: null,
             signature: null
-        };
+        },
+        {
+            Name: 'AAMIR',
+            Title: 'HLF 2020',
+            _id: 'asdbd234236',
+            logo: null,
+            signature: null
+        }, {
+            Name: 'SABIH',
+            Title: 'HLF 2020',
+            _id: 'asdbd234237',
+            logo: null,
+            signature: null
+        },
+        {
+            Name: 'HASSAN',
+            Title: 'HLF 2020',
+            _id: 'asdbd234237',
+            logo: null,
+            signature: null
+        }];
 
-        await contract.submitTransaction('PublishCertificate', JSON.stringify(cert));
+        await contract.submitTransaction('PublishBatch', JSON.stringify(cert));
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.
