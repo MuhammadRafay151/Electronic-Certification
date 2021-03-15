@@ -55,7 +55,7 @@ class ecert extends Contract {
         for (let x = 0; x < batch.length; x++) {
             let key = batch[x]._id;
             delete batch[x]._id;
-            await ctx.stub.putState(key, Buffer.from(JSON.stringify(batch[x])))
+            await ctx.stub.putState(key, Buffer.from(JSON.stringify(batch[x])));
         }
     }
 
